@@ -20,7 +20,11 @@ class DrinkDetailViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        titleLabel.accessibilityIdentifier = "drink_title_label"
+        descriptionLabel.accessibilityIdentifier = "drink_description_label"
+        instructionsLabel.accessibilityIdentifier = "drink_instructions_label"
+        
         if let url = viewModel.drinkImageUrl {
             imageView.loadImage(at: url)
         }

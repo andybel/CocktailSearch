@@ -20,8 +20,8 @@ final class DrinkCell: UITableViewCell {
         
         imgView.layer.cornerRadius = 4.0
         imgView.clipsToBounds = true
-        titleLabel.accessibilityIdentifier = "product_cell_title_label"
-        authorLabel.accessibilityIdentifier = "product_cell_author_label"
+        titleLabel.accessibilityIdentifier = "drink_cell_title_label"
+        authorLabel.accessibilityIdentifier = "drink_cell_author_label"
     }
     
     func configure(with drink: Drink) {

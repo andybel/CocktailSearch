@@ -9,34 +9,53 @@ import XCTest
 
 class CocktailSearchUITests: XCTestCase {
 
+    private var app: XCUIApplication!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        
         continueAfterFailure = false
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
+        app.launchArguments = ["enable-testing"]
+        app.launch()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        app = nil
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    func testMockSearchDisplaysExpected() throws {
+        
+        // PRE-INPUT
+        let statusText = app.staticTexts["current_status_label"].label
+        XCTAssertEqual(statusText, "Use the input field above to search for cocktails")
+        
+        app.textFields["Search cocktails"].tap()
+        
+        app.keys["t"].tap()
+        app.keys["e"].tap()
+        app.keys["s"].tap()
+        app.keys["t"].tap()
+        app/*@START_MENU_TOKEN@*/.buttons["search"]/*[[".keyboards",".buttons[\"search\"]",".buttons[\"Search\"]"],[[[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        // RESULT CELLS
+        let topCell = app.tables.element(boundBy: 0).cells.element(boundBy: 0)
+        
+        let cellTitleText = topCell.staticTexts["drink_cell_title_label"].label
+        XCTAssertEqual(cellTitleText, "Old Pal")
+        let cellAuthorText = topCell.staticTexts["drink_cell_author_label"].label
+        XCTAssertEqual(cellAuthorText, "Cocktail")
+        
+        topCell.tap()
+        
+        // DETAIL
+        let titleText = app.staticTexts["drink_title_label"].label
+        XCTAssertEqual(titleText, "Old Pal")
+        
+        let descText = app.staticTexts["drink_description_label"].label
+        XCTAssertEqual(descText, "Cocktail")
+        
+        let instructionsText = app.staticTexts["drink_instructions_label"].label
+        XCTAssertEqual(instructionsText, "Chill cocktail glass. Add ingredients to a mixing glass, and fill 2/3 full with ice. Stir about 20 seconds. Empty cocktail glass and strain into the glass. Garnish with a twist of lemon peel.")
     }
 }
