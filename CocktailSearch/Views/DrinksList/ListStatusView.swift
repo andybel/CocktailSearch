@@ -17,7 +17,7 @@ enum ListStatus: Equatable {
     var description: String {
         switch self {
         case .awaitingInput:
-            return NSLocalizedString("use_the_input_field_above_to_search_for_products", comment: "ListStatus.awaitingInput description")
+            return NSLocalizedString("use_the_input_field_above_to_search_for_drinks", comment: "ListStatus.awaitingInput description")
         case .loadingData:
             return NSLocalizedString("searching", comment: "ListStatus.loadingData description") + "..."
         case .noItemsReturned:

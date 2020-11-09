@@ -22,7 +22,7 @@ class DrinksListViewController: UIViewController, Storyboarded, TableViewUpdatab
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = NSLocalizedString("product_search", comment: "ProductList main title")
+        title = NSLocalizedString("drink_search", comment: "ProductList main title")
         
         tableView.dataSource = drinksDataSource
         configureViewModel()
@@ -79,8 +79,8 @@ class DrinksListViewController: UIViewController, Storyboarded, TableViewUpdatab
         submitButton.accessibilityLabel = NSLocalizedString("search", comment: "text for search button")
         submitButton.setTitle(NSLocalizedString("search", comment: "text for search button"), for: .normal)
         
-        searchTextField.accessibilityLabel = NSLocalizedString("search_products", comment: "The search input field placeholder")
-        searchTextField.placeholder = NSLocalizedString("search_products", comment: "The search input field placeholder")
+        searchTextField.accessibilityLabel = NSLocalizedString("search_drinks", comment: "The search input field placeholder")
+        searchTextField.placeholder = NSLocalizedString("search_drinks", comment: "The search input field placeholder")
         searchTextField.addTarget(self, action: #selector(didUpdateSearchInputText(_:)), for: .editingChanged)
         searchTextField.clearButtonMode = .whileEditing
         searchTextField.delegate = self
@@ -123,7 +123,7 @@ class DrinksListViewController: UIViewController, Storyboarded, TableViewUpdatab
 extension DrinksListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190.0
+        return 140.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

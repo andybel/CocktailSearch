@@ -31,10 +31,10 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
     }
     
     private func displayDetail(for drink: Drink) {
-//        let child = ProductDetailCoordinator(navigationController: navigationController, product: product)
-//        child.parentCoordinator = self
-//        childCoordinators.append(child)
-//        child.start()
+        let child = DrinkDetailCoordinator(navigationController: navigationController, drink: drink)
+        child.parentCoordinator = self
+        childCoordinators.append(child)
+        child.start()
     }
 
     func childDidFinish(_ child: Coordinator?) {
@@ -50,11 +50,11 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
                               didShow viewController: UIViewController,
                               animated: Bool) {
 
-//        guard let fromVC = navigationController.transitionCoordinator?.viewController(forKey: .from),
-//            navigationController.viewControllers.contains(fromVC),
-//            let productDetailVC = fromVC as? ProductDetailViewController else {
-//                return
-//        }
-//        childDidFinish(productDetailVC.coordinator)
+        guard let fromVC = navigationController.transitionCoordinator?.viewController(forKey: .from),
+            navigationController.viewControllers.contains(fromVC),
+            let drinkDetailVC = fromVC as? DrinkDetailViewController else {
+                return
+        }
+        childDidFinish(drinkDetailVC.coordinator)
     }
 }

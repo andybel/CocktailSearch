@@ -1,0 +1,47 @@
+/* TCError.requestConstructionError description */
+"error_constructing_the_request" = "Fehler beim Erstellen der Anforderung";
+
+/* TCError.decodingError description */
+"error_decoding_data_from_the_server" = "Fehler beim Dekodieren von Daten vom Server";
+
+/* noData.decodingError description */
+"error_retrieving_data_from_the_server" = "Fehler beim Abrufen der Daten vom Server";
+
+/* TCError.requestReturnedEmpty description */
+"no_items_found" = "Es wurden keine Artikel zurückgegeben";
+
+/* TCError.noNetwork description */
+"no_network_connection" = "Keine Netzwerk Verbindung";
+
+/* ListStatus.noItemsReturned description */
+"no_results_were_returned_for_this_item" = "Für diesen Artikel wurden keine Ergebnisse zurückgegeben";
+
+/* ListStatus.noNetwork description */
+"please_check_your_connection" = "Bitte überprüfen Sie Ihre Verbindung";
+
+/* TCError.emptyInput description */
+"search_is_empty" = "Die Suche ist leer";
+
+/* The search input field placeholder */
+"search_drinks" = "Suche Cocktails";
+
+/* ListStatus.loadingData description */
+"searching" = "suchen";
+
+/* ListStatus.awaitingInput description */
+"use_the_input_field_above_to_search_for_drinks" = "Verwenden Sie das Eingabefeld oben, um nach Produkten zu suchen";
+
+/* text for search button */
+"search" = "Suche";
+
+/* ProductList main title */
+"drink_search" = "Cocktail suche";
+
+/* Author label text for missing */
+"author_not_known" = "autor nicht bekannt";
+
+/* accessibility Label for status view label*/
+"current_status_label" = "Aktueller Statustext";
+
+/* accessibility Label for product title label*/
+"product_title_label" = "Produkt titel";

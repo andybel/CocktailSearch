@@ -35,15 +35,4 @@ enum CSEndpoint {
         components.queryItems = [URLQueryItem(name: "s", value: term)]
         return components.url
     }
-    
-//    var urlRequest: URLRequest? {
-//        
-//        guard let url = url else {
-//            return nil
-//        }
-//        var request = URLRequest(url: url)
-////        request.setValue("crosschannelapp", forHTTPHeaderField: "X-ClientName")
-////        request.setValue("no-cache", forHTTPHeaderField: "Cache-Control")
-//        return request
-//    }
 }

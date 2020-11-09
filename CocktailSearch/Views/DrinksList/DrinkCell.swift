@@ -18,6 +18,8 @@ final class DrinkCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        imgView.layer.cornerRadius = 4.0
+        imgView.clipsToBounds = true
         titleLabel.accessibilityIdentifier = "product_cell_title_label"
         authorLabel.accessibilityIdentifier = "product_cell_author_label"
     }
