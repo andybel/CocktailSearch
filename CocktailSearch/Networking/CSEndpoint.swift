@@ -9,22 +9,24 @@ import Foundation
 
 enum CSEndpoint {
     case search(String)
+    case searchFirstLetter(String)
 
     var queryItems: [URLQueryItem] {
         switch self {
         case .search(let searchTerm):
-            let encodedTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            return [URLQueryItem(name: "suchbegriff", value: encodedTerm)]
+            return [URLQueryItem(name: "s", value: searchTerm)]
+        case .searchFirstLetter(let searchLetter):
+            return [URLQueryItem(name: "f", value: searchLetter)]
         }
     }
     
     var url: URL? {
         
-        var term = ""
-        switch self {
-        case .search(let searchTerm):
-            term = searchTerm
-        }
+//        var term = ""
+//        switch self {
+//        case .search(let searchTerm):
+//            term = searchTerm
+//        }
         
         // thecocktaildb.com/api/json/v1/1/search.php?s=margarita
         
@@ -32,7 +34,7 @@ enum CSEndpoint {
         components.scheme = "https"
         components.host = "www.thecocktaildb.com"
         components.path = "/api/json/v1/1/search.php"
-        components.queryItems = [URLQueryItem(name: "s", value: term)]
+        components.queryItems = queryItems
         return components.url
     }
 }

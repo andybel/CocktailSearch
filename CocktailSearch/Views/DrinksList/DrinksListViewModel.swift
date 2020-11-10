@@ -22,6 +22,7 @@ final class DrinksListViewModelDefault: DrinksListViewModel {
     
     private var inputIsValid = false
     private var drinks = [Drink]()
+    private var fetchInProgress = false
     
     var searchInput: String? = nil {
         didSet {
@@ -29,6 +30,17 @@ final class DrinksListViewModelDefault: DrinksListViewModel {
             if newInputValid != inputIsValid {
                 inputIsValid = newInputValid
                 validInputUpdated(inputIsValid)
+            }
+            
+            if searchInput?.count == 1 && drinks.isEmpty {
+                submitSearch()
+            } else if searchInput?.count == 0 {
+                // TODO: keep current drinks in memory in case user submits the same letter again?
+                drinks = []
+                didUpdate(drinks)
+            } else if let input = searchInput {
+                let filteredDrinks = drinks.filter { $0.name.lowercased().contains(input.lowercased()) }
+                didUpdate(filteredDrinks)
             }
         }
     }
@@ -44,20 +56,31 @@ final class DrinksListViewModelDefault: DrinksListViewModel {
     
     // MARK: protocol publics
     func selectItem(at index: Int) {
-        let selectedDrink = drinks[index]
-        listDidSelectDrink(selectedDrink)
+        
+        if let searchInput = self.searchInput, searchInput.count > 1 {
+            let filteredDrinks = drinks.filter { $0.name.lowercased().contains(searchInput.lowercased()) }
+            listDidSelectDrink(filteredDrinks[index])
+        } else {
+            listDidSelectDrink(drinks[index])
+        }
     }
     
     func submitSearch() {
         
-        guard let term = searchInput, !term.isEmpty else {
+        guard fetchInProgress == false, let term = searchInput, !term.isEmpty else {
             didError(CSError.emptyInput)
             return
         }
+        fetchInProgress = true
         
-        searchService.fetchResults(for: .search(term)) { [weak self] result in
+        let endpoint: CSEndpoint = term.count == 1 ? .searchFirstLetter(term) : .search(term)
+    
+        searchService.fetchResults(for: endpoint) { [weak self] result in
 
             guard let self = self else { return }
+            
+            self.fetchInProgress = false
+            
             switch result {
             case .success(let drinks):
                 self.drinks = drinks
@@ -65,7 +88,14 @@ final class DrinksListViewModelDefault: DrinksListViewModel {
                     self.didError(CSError.requestReturnedEmpty)
                     return
                 }
-                self.didUpdate(drinks)
+                
+                if let searchInput = self.searchInput, searchInput.count > 1 {
+                    let filteredDrinks = drinks.filter { $0.name.lowercased().contains(searchInput.lowercased()) }
+                    self.didUpdate(filteredDrinks)
+                } else {
+                    self.didUpdate(drinks)
+                }
+                
             case .failure(let error):
                 self.didError(error)
             }

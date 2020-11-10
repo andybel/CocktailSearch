@@ -138,3 +138,14 @@ extension DrinksListViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension DrinksListViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        // TODO: set a threshold
+        if searchTextField.isFirstResponder {
+            searchTextField.resignFirstResponder()
+        }
+    }
+}

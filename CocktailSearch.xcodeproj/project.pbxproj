@@ -11,6 +11,7 @@
 		23411709255419C200BF3772 /* DrinkDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23411708255419C200BF3772 /* DrinkDetail.storyboard */; };
 		2341170E25541A7000BF3772 /* DrinkDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2341170D25541A7000BF3772 /* DrinkDetailCoordinator.swift */; };
 		2341171325541BDB00BF3772 /* DrinkDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2341171225541BDB00BF3772 /* DrinkDetailViewModel.swift */; };
+		2363EC3B255AEB8600B0944B /* String+parseAsInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2363EC3A255AEB8600B0944B /* String+parseAsInt.swift */; };
 		23CD201725594718002F1077 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23CD201925594718002F1077 /* Localizable.strings */; };
 		23CD202425594BA6002F1077 /* StubDataTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CD202225594BA6002F1077 /* StubDataTestHelper.swift */; };
 		23CD202525594BA6002F1077 /* MockSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23CD202325594BA6002F1077 /* MockSearchService.swift */; };
@@ -63,6 +64,7 @@
 		23411708255419C200BF3772 /* DrinkDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrinkDetail.storyboard; sourceTree = "<group>"; };
 		2341170D25541A7000BF3772 /* DrinkDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailCoordinator.swift; sourceTree = "<group>"; };
 		2341171225541BDB00BF3772 /* DrinkDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailViewModel.swift; sourceTree = "<group>"; };
+		2363EC3A255AEB8600B0944B /* String+parseAsInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+parseAsInt.swift"; sourceTree = "<group>"; };
 		23CD200A25594688002F1077 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/DrinksList.strings; sourceTree = "<group>"; };
 		23CD200E25594688002F1077 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		23CD201825594718002F1077 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			children = (
 				23EBD5E1255311D800D2B6F5 /* Data+asStringDecription.swift */,
 				23EBD5E0255311D800D2B6F5 /* UIImageView+loadFromUrl.swift */,
+				2363EC3A255AEB8600B0944B /* String+parseAsInt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				23EBD5AD2553006200D2B6F5 /* UIImageLoader.swift in Sources */,
 				23EBD5C32553015000D2B6F5 /* Drink.swift in Sources */,
 				23CD202525594BA6002F1077 /* MockSearchService.swift in Sources */,
+				2363EC3B255AEB8600B0944B /* String+parseAsInt.swift in Sources */,
 				23EBD5BE2553010000D2B6F5 /* MainCoordinator.swift in Sources */,
 				23EBD56B2552FE8600D2B6F5 /* DrinksListViewController.swift in Sources */,
 				23EBD5CD2553078400D2B6F5 /* DrinkCell.swift in Sources */,

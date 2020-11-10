@@ -17,12 +17,10 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
         let vc = DrinksListViewController.instantiate()
 
         var searchService: SearchService = SearchServiceDefault()
-        //if CommandLine.arguments.contains("enable-testing") {
-            
+        if CommandLine.arguments.contains("enable-testing") {
             print("TEST ENABLED")
-            
             searchService = MockSearchService()
-        //}
+        }
 
         let drinksListViewModel = DrinksListViewModelDefault(searchService: searchService)
         drinksListViewModel.listDidSelectDrink = { [weak self] drink in

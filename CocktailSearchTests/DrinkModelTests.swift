@@ -19,7 +19,15 @@ class DrinkModelTests: XCTestCase {
         XCTAssertEqual(mockDrink.instructions, "Chill cocktail glass. Add ingredients to a mixing glass, and fill 2/3 full with ice. Stir about 20 seconds. Empty cocktail glass and strain into the glass. Garnish with a twist of lemon peel.")
         XCTAssertEqual(mockDrink.category, "Cocktail")
         XCTAssertEqual(mockDrink.thumbnailUrl, "https://www.thecocktaildb.com/images/media/drink/x03td31521761009.jpg")
-        XCTAssertEqual(mockDrink.isAlcoholic, "Alcoholic")
+        XCTAssertEqual(mockDrink.isAlcoholic, true)
         
+        XCTAssertEqual(mockDrink.ingredients.count, 3)
+        XCTAssertEqual(mockDrink.ingredients[1]?.name, "Rye whiskey")
+        XCTAssertEqual(mockDrink.ingredients[2]?.name, "Campari")
+        XCTAssertEqual(mockDrink.ingredients[3]?.name, "Dry Vermouth")
+        
+        XCTAssertEqual(mockDrink.ingredients[1]?.measure, "2 oz")
+        XCTAssertEqual(mockDrink.ingredients[2]?.measure, "1 oz")
+        XCTAssertEqual(mockDrink.ingredients[3]?.measure, "1 oz")
     }
 }

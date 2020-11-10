@@ -24,7 +24,15 @@ class DrinkDetailViewModelDefault: DrinkDetailViewModel {
     }
     
     var drinkInstructionsStr: String {
-        return drink.instructions ?? "-"
+        
+        var instructionStr = ""
+        drink.ingredients.forEach { _, val in
+            instructionStr += "- \(val.measure) \(val.name)\n"
+        }
+        if let instr = drink.instructions {
+            instructionStr += "\n\n" + instr
+        }
+        return instructionStr
     }
     
     var drinkDescription: String {
